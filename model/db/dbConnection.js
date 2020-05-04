@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var url = 'mongodb://localhost:27017/nbad';
+// var url = 'mongodb://localhost:27017/nbad';
+var url = 'mongodb+srv://root:root@kumardella-8dfi3.mongodb.net/nbad?retryWrites=true&w=majority';
 
 mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true}); //Establishing new connection to db
 const db = mongoose.connection;
