@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs')%>
+    <title>Sign up</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs')%>
+    <%- include('partials/navigation.ejs')%>
+    <div class="jumbotron bg-white">
+      <div class="container">
+        <h1 class="display-4">Welcome Online Book Depot</h1>
+        <p class="lead">Please enter below details to Signup!</p>
+        <hr class="my-4">
+
+        <div class="error-message" style="color:red">
+          <% if(errorMsg.length>0){ %>
+            <% errorMsg.forEach(function(item){ %>
+              <p><span><%= item.msg %></span></p>
+            <% }); %>
+          <% } %>
+        </div>
+
+        <form action='/signup' method='post' class="required">
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label class="control-label">First Name</label>
+              <input type="text" class="form-control" name="firstname" placeholder="Mark Evan">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Last Name</label>
+              <input type="text" class="form-control" name="lastname" placeholder="Zucker">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Username</label>
+              <input type="text" class="form-control" name="username" placeholder="username123">
+              <small id="usernameHelp" class="form-text text-muted">Username should be alphanumeric</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Email</label>
+              <input type="text" class="form-control" name="email" placeholder="email.example.com">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="">
+              <small id="passwordHelp" class="form-text text-muted">Password <abbr class="text-info" title="Password should contain atleast 1 numeric, 1 lowercase, 1 Uppercase, 1 out of '@$!%*?&' and minimum 8 char long">help</abbr></small>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Confirm Password</label>
+              <input type="password" class="form-control" name="confirm_password" placeholder="">
+              <small id="confirmpasswordHelp" class="form-text text-muted">Confirm password should match password</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label class="control-label">Address</label>
+              <input type="text" class="form-control" name="address1Field" placeholder="123 Creek Dr, long">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label class="">Apartment/Suite</label>
+              <input type="text" class="form-control" name="address2Field" placeholder="Apt#B">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label class="control-label">Zip Code</label>
+              <input type="text" class="form-control" name="zip" placeholder="12345">
+              <small id="zipHelp" class="form-text text-muted">Zip code length 5 digits</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label class="control-label">City</label>
+              <input type="text" class="form-control" name="city" placeholder="Charlotte">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">State</label>
+              <input type="text" class="form-control" name="state" placeholder="North Carolina">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="control-label">Country</label>
+              <input type="text" class="form-control" name="country" placeholder="United States">
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Create Account</button>
+        </form>
+      </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>
