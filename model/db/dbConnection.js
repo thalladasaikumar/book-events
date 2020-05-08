@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 // var url = 'mongodb://localhost:27017/nbad';
-var url = 'mongodb+srv://root:root@kumardella-8dfi3.mongodb.net/nbad?retryWrites=true&w=majority';
+var url = 'mongodb+srv://root:<password>@kumardella-8dfi3.mongodb.net/nbad?retryWrites=true&w=majority';
 
 mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true}); //Establishing new connection to db
 const db = mongoose.connection;
@@ -52,12 +52,25 @@ const userPassword = new mongoose.Schema({
   password: String
 });
 
+//Connection invites
+const connectionInvites = new mongoose.Schema({
+  connectionId: Number,
+  connection : [
+    {
+      sender: String,
+      receiver: String
+    }
+  ]
+});
+
 const userModel = mongoose.model('users', userSchema); //Model for User
 const connectionModel = mongoose.model('connections', connectionSchema); //Model for Connection
 const userProfileModel = mongoose.model('userprofiles', userProfileSchema); //Model for User Profile
 const userPasswordModel = mongoose.model('userpasswords', userPassword); //Model for Username and password
+const connectionInvitesModel = mongoose.model('connectioninvites', connectionInvites); //Model for connection invites
 
 module.exports.userModel = userModel;
 module.exports.connectionModel = connectionModel;
 module.exports.userProfileModel = userProfileModel;
 module.exports.userPasswordModel = userPasswordModel;
+module.exports.connectionInvitesModel = connectionInvitesModel;
